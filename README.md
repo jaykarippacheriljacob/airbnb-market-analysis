@@ -10,7 +10,7 @@ What drives price in this market, and are there neighborhoods or listing types t
 - After cleaning: 8,441 listings with valid price data
 
 ## Tools
-Python/Pandas for cleaning and EDA → Plotly for geographic visualization → keyword frequency analysis on review text
+Python/Pandas for cleaning and EDA → Plotly for geographic visualization → keyword frequency analysis on review text → Tableau Public for the dashboard
 
 ## Process
 
@@ -57,6 +57,14 @@ This confirms the keyword pattern with hard numbers — room type is a major dri
 
 **A non-obvious anomaly:** Mid-Low tier has the *highest* Private room share of any tier (47.8%) — higher than Low tier itself. This means Low tier's entire-home listings (65.5% of that tier) are unusually cheap for their category, which is the more interesting finding than the unsurprising "private rooms cost less."
 
+## Dashboard
+Built in Tableau Public — a geographic price map of all 8,441 listings, using Berlin's actual boundary outline for context.
+
+- Colored by price (capped at €300 for readability, since the true max reaches €10,025)
+- Clear gradient visible: darker/higher prices concentrate toward the city center, lighter/lower prices toward the outer edges — visually confirming the neighborhood ranking and the scatter-plot version built earlier in Python
+
+[Live dashboard link](https://public.tableau.com/shared/T8KHHBMZW?:display_count=n&:origin=viz_share_link)
+
 ## What I found
 Room type is the dominant driver of price tier in Berlin — confirmed independently through both review text (keyword differences) and listing structure (room_type composition), which cross-validate each other rather than relying on either alone. Geographically, price also tracks centrality, with well-known central neighborhoods (Regierungsviertel, Prenzlauer Berg) commanding the highest reliable medians. The most interesting finding wasn't the obvious "entire homes cost more" pattern, but the Mid-Low tier anomaly: a disproportionate share of private rooms in that band suggests Low-tier entire-home listings are priced unusually low relative to comparable entire-home listings elsewhere.
 
@@ -71,5 +79,7 @@ For a host with an entire-home listing priced in the Low tier: this is a signal 
   listings.csv
   reviews.csv    (tracked via Git LFS)
   neighbourhoods.geojson
+/dashboard
+  (Tableau workbook, if saved locally)
 README.md
 ```
